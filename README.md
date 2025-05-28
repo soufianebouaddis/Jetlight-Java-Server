@@ -1,4 +1,4 @@
-# Pure Java HTTP Server with JWT Authentication, IoC, and Role-Based Access
+# Jetlight Java HTTP Server with JWT Authentication, IoC, and Role-Based Access
 
 This project is a lightweight, framework-free RESTful HTTP server built with **pure Java**. It includes:
 
