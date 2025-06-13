@@ -6,14 +6,15 @@ public class TenantDTO {
     private String name;
     private String username;
     private String organization;
-    private String role;
-    public TenantDTO() {
-    }
+    private String password;
 
-    public TenantDTO(String name, String username, String organization) {
+    public TenantDTO(){}
+
+    public TenantDTO(String name, String username, String organization, String password) {
         this.name = name;
         this.username = username;
         this.organization = organization;
+        this.password = password;
     }
 
     public String getName() {
@@ -40,12 +41,21 @@ public class TenantDTO {
         this.organization = organization;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "TenantDTO{" +
                 "name='" + name + '\'' +
                 ", username='" + username + '\'' +
                 ", organization='" + organization + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
