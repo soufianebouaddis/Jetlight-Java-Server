@@ -1,4 +1,4 @@
-package org.os.oldMiddleWare;
+package org.os.deprecated;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -22,4 +22,3 @@ public class HealthHandler implements HttpHandler {
         }
     }
 }
-

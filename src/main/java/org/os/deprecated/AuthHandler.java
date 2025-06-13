@@ -1,4 +1,4 @@
-package org.os.oldMiddleWare;
+package org.os.deprecated;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -37,19 +37,18 @@ public class AuthHandler implements HttpHandler {
                                 .username(json.getUsername())
                                 .password(json.getPassword())
                                 .organization(json.getOrganization())
-                                .role(json.getRole()).build()
-                );
+                                .role(json.getRole()).build());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
             respond(exchange, 200, "User registered");
         } else if (path.equals("/login") && method.equals("POST")) {
             LoginDto json = JsonUtil.fromJson(body, LoginDto.class);
-            System.out.println("login dto : "+json.toString());
+            System.out.println("login dto : " + json.toString());
             if (tenantService.validateUser(json.getUsername(), json.getPassword())) {
                 Tenant tenant = tenantService.getByUsername(json.getUsername());
                 String token = JwtUtil.generate(tenant.getUsername(), tenant.getRole());
-                System.out.println("token Auth handler : "+token);
+                System.out.println("token Auth handler : " + token);
                 respond(exchange, 200, "{\"token\":\"" + token + "\"}");
             } else {
                 respond(exchange, 401, "Invalid credentials");
@@ -59,11 +58,10 @@ public class AuthHandler implements HttpHandler {
         }
     }
 
-    private void respond(HttpExchange exchange, int     code, String msg) throws IOException {
+    private void respond(HttpExchange exchange, int code, String msg) throws IOException {
         exchange.sendResponseHeaders(code, msg.length());
         try (OutputStream os = exchange.getResponseBody()) {
             os.write(msg.getBytes(StandardCharsets.UTF_8));
         }
     }
 }
-

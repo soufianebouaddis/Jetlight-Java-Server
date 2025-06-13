@@ -1,4 +1,4 @@
-package org.os.oldMiddleWare;
+package org.os.deprecated;
 
 import org.os.config.IocContainer;
 import org.os.controller.TenantController;
@@ -10,16 +10,22 @@ public class BeanConfig {
 
     public BeanConfig(IocContainer container) {
         this.container = container;
-        //registerBeans();
+        // registerBeans();
     }
 
-    /*private void registerBeans() {
-        container.registerBean(JpaRepository.class, new JpaRepositoryImpl());
-        container.registerBean(TenantService.class, new TenantServiceImpl(container.getBean(JpaRepository.class)));
-        container.registerBean(TenantController.class, new TenantController(container.getBean(TenantService.class)));
-        container.registerBean(TenantHandler.class, new TenantHandler(container.getBean(TenantService.class)));
-        container.registerBean(AuthHandler.class, new AuthHandler(container.getBean(TenantService.class)));
-    }*/
+    /*
+     * private void registerBeans() {
+     * container.registerBean(JpaRepository.class, new JpaRepositoryImpl());
+     * container.registerBean(TenantService.class, new
+     * TenantServiceImpl(container.getBean(JpaRepository.class)));
+     * container.registerBean(TenantController.class, new
+     * TenantController(container.getBean(TenantService.class)));
+     * container.registerBean(TenantHandler.class, new
+     * TenantHandler(container.getBean(TenantService.class)));
+     * container.registerBean(AuthHandler.class, new
+     * AuthHandler(container.getBean(TenantService.class)));
+     * }
+     */
 
     public JpaRepository jpaRepository() {
         return container.getBean(JpaRepository.class);
@@ -28,15 +34,16 @@ public class BeanConfig {
     public TenantService tenantService() {
         return container.getBean(TenantService.class);
     }
-    public TenantController tenantController(){
+
+    public TenantController tenantController() {
         return container.getBean(TenantController.class);
     }
-    public TenantHandler tenantHandler(){
+
+    public TenantHandler tenantHandler() {
         return container.getBean(TenantHandler.class);
     }
-    public AuthHandler authHandler(){
+
+    public AuthHandler authHandler() {
         return container.getBean(AuthHandler.class);
     }
 }
-
-

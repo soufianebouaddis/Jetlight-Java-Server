@@ -1,4 +1,4 @@
-package org.os.oldMiddleWare;
+package org.os.deprecated;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -39,7 +39,7 @@ public class TenantHandler implements HttpHandler {
                     case "PUT" -> {
                         String body = new BufferedReader(new InputStreamReader(exchange.getRequestBody()))
                                 .lines().collect(Collectors.joining("\n"));
-                        respond(exchange,200, tenantController.updateTenant(id,body));
+                        respond(exchange, 200, tenantController.updateTenant(id, body));
                     }
                     default -> respond(exchange, 405, "Method Not Allowed");
                 }
@@ -61,4 +61,3 @@ public class TenantHandler implements HttpHandler {
         }
     }
 }
-
