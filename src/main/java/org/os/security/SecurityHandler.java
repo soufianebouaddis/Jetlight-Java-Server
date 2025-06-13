@@ -22,17 +22,19 @@ public class SecurityHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         String ip = exchange.getRemoteAddress().getAddress().getHostAddress();
-        System.out.println("IP : "+ip);
+
         if (!allowedIps.isEmpty() && !allowedIps.contains(ip)) {
             exchange.sendResponseHeaders(403, 0);
-            exchange.getResponseBody().close();
+            exchange.getResponseBody()
+                    .close();
             return;
         }
 
         String auth = exchange.getRequestHeaders().getFirst("Authorization");
         if (auth == null || !auth.startsWith("Bearer ")) {
             exchange.sendResponseHeaders(401, 0);
-            exchange.getResponseBody().close();
+            exchange.getResponseBody()
+                    .close();
             return;
         }
 
@@ -41,10 +43,10 @@ public class SecurityHandler implements HttpHandler {
             System.out.println("Token security handler: "+token);
             DecodedJWT jwt = JwtUtil.verify(token);
             String role = jwt.getClaim("role").asString();
-
             if (requiredRole != null && !requiredRole.equals(role)) {
                 exchange.sendResponseHeaders(403, 0);
-                exchange.getResponseBody().close();
+                exchange.getResponseBody()
+                        .close();
                 return;
             }
             exchange.setAttribute("username", jwt.getClaim("username").asString());
@@ -52,7 +54,8 @@ public class SecurityHandler implements HttpHandler {
             next.handle(exchange);
         } catch (Exception e) {
             exchange.sendResponseHeaders(401, 0);
-            exchange.getResponseBody().close();
+            exchange.getResponseBody()
+                    .close();
         }
     }
 }

@@ -1,17 +1,18 @@
 package org.os.repository.impl;
 
+import org.os.annotations.Repository;
 import org.os.dto.TenantDTO;
 import org.os.exception.DataAccessException;
 import org.os.model.Tenant;
 import org.os.repository.JpaRepository;
 
 import java.util.*;
-
+@Repository
 public class JpaRepositoryImpl implements JpaRepository {
     private List<Tenant> db = new ArrayList<>();
 
-    public JpaRepositoryImpl() {
-    }
+    /*public JpaRepositoryImpl() {
+    }*/
 
     @Override
     public Tenant save(Tenant tenant) throws Exception {
@@ -53,7 +54,7 @@ public class JpaRepositoryImpl implements JpaRepository {
     @Override
     public List<Tenant> findAll() throws Exception {
         try {
-            return db;
+            return db.isEmpty() ? Collections.EMPTY_LIST: db;
         } catch (Exception e) {
             throw new DataAccessException("Error occurred during find all: " + e.getMessage(), e);
         }
@@ -102,4 +103,9 @@ public class JpaRepositoryImpl implements JpaRepository {
                 .findFirst()
                 .get();
     }
+
+
+
+
+
 }

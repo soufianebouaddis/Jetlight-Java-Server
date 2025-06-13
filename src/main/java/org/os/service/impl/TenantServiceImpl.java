@@ -1,5 +1,7 @@
 package org.os.service.impl;
 
+import org.os.annotations.Inject;
+import org.os.annotations.Service;
 import org.os.dto.TenantDTO;
 import org.os.model.Tenant;
 import org.os.repository.JpaRepository;
@@ -7,13 +9,14 @@ import org.os.service.TenantService;
 
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class TenantServiceImpl implements TenantService {
-    private final JpaRepository jpaRepository;
+    @Inject
+    private JpaRepository jpaRepository;
 
-    public TenantServiceImpl(JpaRepository jpaRepository) {
+    /*public TenantServiceImpl(JpaRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
-    }
+    }*/
 
     @Override
     public Tenant save(Tenant tenant) throws Exception {
