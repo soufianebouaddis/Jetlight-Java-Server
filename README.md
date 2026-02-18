@@ -13,18 +13,18 @@ This project is a lightweight, framework-free RESTful HTTP server built with **p
 
 ---
 
-## 🚀 Features
+##  Features
 
-- ✅ Custom dependency injection
-- ✅ REST endpoints (`/register`, `/login`, `/tenants`, `/health`)
-- ✅ JWT Authentication
-- ✅ Secure endpoints using role-based and IP filtering
-- ✅ Concurrency with virtual threads
-- ✅ Fully extendable controller/handler structure
+-  Custom dependency injection
+-  REST endpoints (`/register`, `/login`, `/tenants`, `/health`)
+-  JWT Authentication
+-  Secure endpoints using role-based and IP filtering
+-  Concurrency with virtual threads
+-  Fully extendable controller/handler structure
 
 ---
 
-## 📦 Technologies Used
+##  Technologies Used
 
 - Java 21+
 - `com.sun.net.httpserver.HttpServer`
@@ -34,14 +34,14 @@ This project is a lightweight, framework-free RESTful HTTP server built with **p
 
 ---
 
-## 🔧 Setup
+##  Setup
 
-### ✅ Requirements
+###  Requirements
 
 - Java 21+
 - Git
 
-### 🛠 Run
+###  Run
 
 ```bash
 git clone https://github.com/soufianebouaddis/Jetlight-Java-Server.git
